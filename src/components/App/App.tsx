@@ -1,8 +1,12 @@
 import Main from "../../pages/main/Main";
 
-function App() {
+type AppQunatityProps = {
+  quantity: number;
+}
+
+function App({quantity}: AppQunatityProps): JSX.Element {
   return (
-    <Main />
+    <Main quantity={quantity}/>
   )
 }
 
