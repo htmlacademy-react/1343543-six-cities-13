@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function Card(): JSX.Element{
   return (
@@ -39,7 +39,7 @@ function Card(): JSX.Element{
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: "80%" }} />
+            <span style={{ width: '80%' }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -51,7 +51,7 @@ function Card(): JSX.Element{
         <p className="place-card__type">Apartment</p>
       </div>
     </article>
-  )
+  );
 }
 
 export default Card;

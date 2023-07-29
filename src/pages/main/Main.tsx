@@ -1,4 +1,3 @@
-import React from "react"
 import Card from '../../components/Card/Card';
 
 type MainQunatityProps = {
@@ -6,13 +5,13 @@ type MainQunatityProps = {
 }
 
 const generateCard = (quantity: number): Array<JSX.Element> => {
-  const cards = []
+  const cards = [];
   for (let i = 0; i < quantity; i++) {
-    cards.push(<Card />)
+    cards.push(<Card />);
   }
 
   return cards;
-}
+};
 
 function Main({quantity}: MainQunatityProps): JSX.Element {
   return (
@@ -135,7 +134,7 @@ function Main({quantity}: MainQunatityProps): JSX.Element {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;

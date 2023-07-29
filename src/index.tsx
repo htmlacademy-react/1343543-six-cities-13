@@ -6,7 +6,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const quantity: number = 315;
+const quantity = 315;
 
 root.render(
   <React.StrictMode>
