@@ -4,6 +4,8 @@ import Offer from '../../pages/offer/Offer';
 import Login from '../../pages/login/Login';
 import Favorites from '../../pages/favorites/Favorites';
 import NotFound from '../../pages/not-found/Not-Found';
+import PrivateRoute from '../Private-Route/Private-Route.tsx';
+import {AuthorizationStatus} from '../../const.ts';
 
 type AppQunatityProps = {
   quantity: number;
@@ -19,14 +21,19 @@ function App({quantity}: AppQunatityProps): JSX.Element {
           <Route path=":id" element={<Offer />} />
         </Route>
         <Route path="/login" element={<Login />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={
+          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <Favorites />
+          </PrivateRoute>
+        }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-    
-    // <Offer />
-    // <Login />
-    // <Favorites />
+
+  // <Offer />
+  // <Login />
+  // <Favorites />
   );
 }
 
