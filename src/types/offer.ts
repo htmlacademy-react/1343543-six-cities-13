@@ -2,7 +2,7 @@ import { City } from './city.ts';
 import { Location } from './location.ts';
 import { Host } from './host.ts';
 
-export type Offer = {
+export type TOffer = {
   id: string,
   title: string,
   type: string, //заменить на Enum

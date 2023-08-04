@@ -6,9 +6,11 @@ import Favorites from '../../pages/favorites/Favorites';
 import NotFound from '../../pages/not-found/Not-Found';
 import PrivateRoute from '../Private-Route/Private-Route.tsx';
 import {AuthorizationStatus} from '../../const.ts';
+import { TOffer } from '../../types/offer.ts';
 
 type AppQunatityProps = {
   quantity: number;
+  offers: TOffer[];
 }
 
 function App({quantity}: AppQunatityProps): JSX.Element {
