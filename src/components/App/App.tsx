@@ -24,7 +24,7 @@ function App({quantity, offers}: AppQunatityProps): JSX.Element {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/favorites" element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+          <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
             <Favorites />
           </PrivateRoute>
         }
