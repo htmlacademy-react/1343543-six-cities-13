@@ -1,10 +1,12 @@
 import CardList from "../../components/CardList/CardList";
+import {TOffer} from "../../types/offer";
 
 type MainQunatityProps = {
   quantity: number;
+  offers: TOffer[];
 }
 
-function Main({quantity}: MainQunatityProps): JSX.Element {
+function Main({quantity, offers}: MainQunatityProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       {/* header */}
@@ -119,7 +121,7 @@ function Main({quantity}: MainQunatityProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <CardList />
+              <CardList offers={offers}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />

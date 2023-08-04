@@ -13,11 +13,11 @@ type AppQunatityProps = {
   offers: TOffer[];
 }
 
-function App({quantity}: AppQunatityProps): JSX.Element {
+function App({quantity, offers}: AppQunatityProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main quantity={quantity}/>} />
+        <Route path="/" element={<Main quantity={quantity} offers={offers}/>} />
         <Route path="/offer">
           <Route index element={<div>No page is selected.</div>}></Route>
           <Route path=":id" element={<Offer />} />

@@ -1,6 +1,13 @@
 import Card from '../../components/Card/Card';
+import { TOffer } from '../../types/offer';
 
-function CardList() {
+
+
+type CardListProps = {
+  offers: TOffer[];
+}
+
+function CardList({offers}: CardListProps) {
   const generateCard = (quantity: number): Array<JSX.Element> => {
     const cards = [];
     for (let i = 0; i < quantity; i++) {
