@@ -1,21 +1,13 @@
-import Card from '../../components/Card/Card';
+import CardList from "../../components/CardList/CardList";
 
 type MainQunatityProps = {
   quantity: number;
 }
 
-const generateCard = (quantity: number): Array<JSX.Element> => {
-  const cards = [];
-  for (let i = 0; i < quantity; i++) {
-    cards.push(<Card />);
-  }
-
-  return cards;
-};
-
 function Main({quantity}: MainQunatityProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      {/* header */}
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -54,8 +46,12 @@ function Main({quantity}: MainQunatityProps): JSX.Element {
           </div>
         </div>
       </header>
+
+      {/* main */}
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
+
+        {/* tabs */}
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
@@ -123,9 +119,7 @@ function Main({quantity}: MainQunatityProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {generateCard(5)}
-              </div>
+              <CardList />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />
