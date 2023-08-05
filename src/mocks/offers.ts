@@ -115,7 +115,7 @@ export const offers: TOffer[] = [
     "type": "flat",
     "price": 150,
     "city": {
-      "name": "Amsterdam",
+      "name": "London",
       "location": {
         "latitude": 52.35514938496378,
         "longitude": 4.673877537499948,

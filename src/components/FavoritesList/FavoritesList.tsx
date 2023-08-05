@@ -1,7 +1,41 @@
-function FavoritesList() {
+import { T } from "vitest/dist/types-2b1c412e.js";
+import FavoriteLocation from "../ FavoriteLocation/FavoriteLocation"
+import { TOffer } from "../../types/offer"
+
+type FavoriteListProps = {
+  offers: TOffer[];
+}
+
+type ReducedOffers = {
+  [key: string]: TOffer[];
+}
+
+function FavoritesList({offers}: FavoriteListProps) {
+  const reducedOffers = offers.reduce<ReducedOffers>((acc, item) => {
+    if (!acc[item.city.name]) {
+      acc[item.city.name] = [];
+    }
+
+    acc[item.city.name].push(item);
+    
+    return acc;
+  }, {});
+
+  const generateList = () => {
+    const locations: JSX.Element[] = [];
+    
+    for (let city in reducedOffers) {
+      locations.push(<FavoriteLocation city={city} offers={reducedOffers[city]} key={city} />)
+    }
+
+    return locations;
+  }
+
+
   return (
     <ul className="favorites__list">
-      <li className="favorites__locations-items">
+      {generateList()}
+      {/* <li className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
           <div className="locations__item">
             <a className="locations__item-link" href="#">
@@ -106,8 +140,8 @@ function FavoritesList() {
             </div>
           </article>
         </div>
-      </li>
-      <li className="favorites__locations-items">
+      </li> */}
+      {/* <li className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
           <div className="locations__item">
             <a className="locations__item-link" href="#">
@@ -163,7 +197,7 @@ function FavoritesList() {
             </div>
           </article>
         </div>
-      </li>
+      </li> */}
     </ul>
   )
 }
