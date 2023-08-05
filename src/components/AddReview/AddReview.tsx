@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function AddReview() {
   const [currentRadio, setRadio] = useState(3);
-  const [reviewText, setReviewText] = useState("");
+  const [reviewText, setReviewText] = useState('');
 
   const handleRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRadio(Number(e.target.value)); 
-  }
+    setRadio(Number(e.target.value));
+  };
 
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -129,7 +129,7 @@ function AddReview() {
         </button>
       </div>
     </form>
-  )
+  );
 }
 
-export default AddReview
+export default AddReview;

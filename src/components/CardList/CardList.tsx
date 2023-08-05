@@ -12,25 +12,21 @@ function CardList({offers}: CardListProps) {
 
   const handleCardHover = (id: string) => {
     setActiveCard(id);
-  }
-
-  const generateCards = (): Array<JSX.Element> => {
-    return offers.map((offer) => {
-      return (
-        <Card
-          key={offer.id}
-          offer={offer}
-          handleCardHover={handleCardHover}
-        />
-      )
-    });
   };
+
+  const generateCards = (): Array<JSX.Element> => offers.map((offer) => (
+    <Card
+      key={offer.id}
+      offer={offer}
+      handleCardHover={handleCardHover}
+    />
+  ));
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {generateCards()}
     </div>
-  )
+  );
 }
 
-export default CardList
+export default CardList;

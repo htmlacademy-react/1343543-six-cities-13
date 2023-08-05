@@ -11,7 +11,7 @@ function Footer() {
         />
       </a>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

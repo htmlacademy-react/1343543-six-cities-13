@@ -1,10 +1,10 @@
-import FavoritesList from "../../components/FavoritesList/FavoritesList";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import { TOffer } from "../../types/offer";
+import FavoritesList from '../../components/FavoritesList/FavoritesList';
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import { TOffer } from '../../types/offer';
 
 type FavoritesProps = {
-  offers: TOffer[]
+  offers: TOffer[];
 }
 
 function Favorites({offers}: FavoritesProps) {

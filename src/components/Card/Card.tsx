@@ -21,9 +21,9 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
     <article className="cities__card place-card" onMouseEnter={() => handleCardHover(id)}>
       {
         isPremium &&
-        (<div className="place-card__mark">
+        <div className="place-card__mark">
           <span>Premium</span>
-        </div>)
+        </div>
       }
 
       <div className="cities__image-wrapper place-card__image-wrapper">
@@ -44,8 +44,7 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button ${isFavorite && `place-card__bookmark-button--active `} button`}
-            type="button"
+            className={`place-card__bookmark-button ${isFavorite ? 'place-card__bookmark-button--active' : ''} button`} type="button"
           >
             <svg
               className="place-card__bookmark-icon"
@@ -59,7 +58,7 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: rating * 20 + '%' }} />
+            <span style={{ width: `${rating * 20 }%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

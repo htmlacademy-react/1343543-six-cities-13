@@ -1,4 +1,4 @@
-import { TOffer } from "../../types/offer";
+import { TOffer } from '../../types/offer';
 
 type FavoriteCardProps = {
   offer: TOffer;
@@ -6,7 +6,6 @@ type FavoriteCardProps = {
 
 function FavoriteCard({offer}: FavoriteCardProps) {
   const {
-    id,
     title,
     type,
     price,
@@ -19,10 +18,13 @@ function FavoriteCard({offer}: FavoriteCardProps) {
   return (
     <article className="favorites__card place-card">
       {
-        isPremium &&
-        (<div className="place-card__mark">
-          <span>Premium</span>
-        </div>)
+        isPremium
+          ? (
+            <div className="place-card__mark">
+              <span>Premium</span>
+            </div>
+          )
+          : null
       }
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -44,7 +46,7 @@ function FavoriteCard({offer}: FavoriteCardProps) {
             </span>
           </div>
           <button
-            className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : ``} button`}
+            className={`place-card__bookmark-button ${isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
             type="button"
           >
             <svg
@@ -59,7 +61,7 @@ function FavoriteCard({offer}: FavoriteCardProps) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: rating * 20 + '%' }} />
+            <span style={{ width: `${rating * 20 }%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -69,7 +71,7 @@ function FavoriteCard({offer}: FavoriteCardProps) {
         <p className="place-card__type">{type}</p>
       </div>
     </article>
-  )
+  );
 }
 
-export default FavoriteCard
+export default FavoriteCard;

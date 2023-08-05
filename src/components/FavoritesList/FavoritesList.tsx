@@ -1,6 +1,5 @@
-import { T } from "vitest/dist/types-2b1c412e.js";
-import FavoriteLocation from "../ FavoriteLocation/FavoriteLocation"
-import { TOffer } from "../../types/offer"
+import FavoriteLocation from '../ FavoriteLocation/FavoriteLocation';
+import { TOffer } from '../../types/offer';
 
 type FavoriteListProps = {
   offers: TOffer[];
@@ -17,19 +16,19 @@ function FavoritesList({offers}: FavoriteListProps) {
     }
 
     acc[item.city.name].push(item);
-    
+
     return acc;
   }, {});
 
   const generateList = () => {
     const locations: JSX.Element[] = [];
-    
-    for (let city in reducedOffers) {
-      locations.push(<FavoriteLocation city={city} offers={reducedOffers[city]} key={city} />)
+
+    for (const city in reducedOffers) {
+      locations.push(<FavoriteLocation city={city} offers={reducedOffers[city]} key={city} />);
     }
 
     return locations;
-  }
+  };
 
 
   return (
@@ -199,7 +198,7 @@ function FavoritesList({offers}: FavoriteListProps) {
         </div>
       </li> */}
     </ul>
-  )
+  );
 }
 
-export default FavoritesList
+export default FavoritesList;

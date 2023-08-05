@@ -1,7 +1,7 @@
-import AddReview from "../../components/AddReview/AddReview";
-import Header from "../../components/Header/Header";
-import { TOffer } from "../../types/offer";
-import { useParams } from "react-router-dom";
+import AddReview from '../../components/AddReview/AddReview';
+import Header from '../../components/Header/Header';
+import { TOffer } from '../../types/offer';
+import { useParams } from 'react-router-dom';
 
 type OfferProps = {
   offers: TOffer[];
@@ -10,17 +10,15 @@ type OfferProps = {
 function Offer({offers}: OfferProps): JSX.Element {
   const params = useParams();
 
-  const offer = offers.find(item => item.id === params.id);
+  const offer = offers.find((item) => item.id === params.id);
 
   const {
-    id,
     title,
     maxAdults,
     type,
     bedrooms,
     price,
     description,
-    images,
     host,
     goods,
     rating,
@@ -28,7 +26,7 @@ function Offer({offers}: OfferProps): JSX.Element {
     isFavorite,
   } = offer as TOffer;
   return (
-    
+
     <div className="page">
       <Header />
       <main className="page__main page__main--offer">
@@ -84,15 +82,19 @@ function Offer({offers}: OfferProps): JSX.Element {
           {/* offer */}
           <div className="offer__container container">
             <div className="offer__wrapper">
-              {isPremium ? <div className="offer__mark">
-                <span>Premium</span>
-              </div> : null}
+              {isPremium
+                ? (
+                  <div className="offer__mark">
+                    <span>Premium</span>
+                  </div>
+                )
+                : null}
               {/* offerName */}
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
                   {title}
                 </h1>
-                <button className={`offer__bookmark-button ${isFavorite ? `offer__bookmark-button--active ` : ``}button`} type="button">
+                <button className={`offer__bookmark-button ${isFavorite ? 'offer__bookmark-button--active ' : ''}button`} type="button">
                   <svg className="offer__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
@@ -103,7 +105,7 @@ function Offer({offers}: OfferProps): JSX.Element {
               {/* offerRating */}
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: rating * 20 + '%' }} />
+                  <span style={{ width: `${rating * 20 }%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="offer__rating-value rating__value">{rating}</span>
@@ -130,7 +132,7 @@ function Offer({offers}: OfferProps): JSX.Element {
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
-                  {goods.map((good: string) => (<li className="offer__inside-item">{good}</li>))}
+                  {goods.map((good: string) => <li key={good} className="offer__inside-item">{good}</li>)}
                 </ul>
               </div>
 
@@ -138,7 +140,7 @@ function Offer({offers}: OfferProps): JSX.Element {
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
                 <div className="offer__host-user user">
-                  <div className={`offer__avatar-wrapper ${host.isPro ? `offer__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
+                  <div className={`offer__avatar-wrapper ${host.isPro ? 'offer__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
                     <img
                       className="offer__avatar user__avatar"
                       src={host.avatarUrl}
