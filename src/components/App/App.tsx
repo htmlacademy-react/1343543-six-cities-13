@@ -6,24 +6,26 @@ import Favorites from '../../pages/favorites/Favorites';
 import NotFound from '../../pages/not-found/Not-Found';
 import PrivateRoute from '../Private-Route/Private-Route.tsx';
 import {AuthorizationStatus} from '../../const.ts';
+import { TOffer } from '../../types/offer.ts';
 
 type AppQunatityProps = {
   quantity: number;
+  offers: TOffer[];
 }
 
-function App({quantity}: AppQunatityProps): JSX.Element {
+function App({quantity, offers}: AppQunatityProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main quantity={quantity}/>} />
+        <Route path="/" element={<Main quantity={quantity} offers={offers}/>} />
         <Route path="/offer">
           <Route index element={<div>No page is selected.</div>}></Route>
-          <Route path=":id" element={<Offer />} />
+          <Route path=":id" element={<Offer offers={offers}/>} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/favorites" element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-            <Favorites />
+          <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <Favorites offers={offers} />
           </PrivateRoute>
         }
         />
