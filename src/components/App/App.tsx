@@ -20,7 +20,7 @@ function App({quantity, offers}: AppQunatityProps): JSX.Element {
         <Route path="/" element={<Main quantity={quantity} offers={offers}/>} />
         <Route path="/offer">
           <Route index element={<div>No page is selected.</div>}></Route>
-          <Route path=":id" element={<Offer />} />
+          <Route path=":id" element={<Offer offers={offers}/>} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/favorites" element={

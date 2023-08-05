@@ -1,4 +1,5 @@
 import { TOffer } from '../../types/offer';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
   offer: TOffer;
@@ -26,7 +27,7 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
       }
 
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
             src={images[0]}
@@ -34,7 +35,7 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
             width={260}
             height={200}
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -63,9 +64,9 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">
+          <Link to={`/offer/${id}`}>
             {title}
-          </a>
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

@@ -29,7 +29,7 @@ export const offers: TOffer[] = [
     ],
     "host": {
       "name": "Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "img/avatar-angelina.jpg",
       "isPro": false
     },
     "images": [
@@ -59,13 +59,14 @@ export const offers: TOffer[] = [
     "isPremium": false,
     "rating": 4,
     "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
-    "bedrooms": 3,
+    "bedrooms": 2,
     "goods": [
-      "Heating"
+      "Heating",
+      "Wi-Fi",
     ],
     "host": {
       "name": "Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "img/avatar-angelina.jpg",
       "isPro": false
     },
     "images": [
@@ -97,11 +98,15 @@ export const offers: TOffer[] = [
     "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
     "bedrooms": 3,
     "goods": [
-      "Heating"
+      "Heating",
+      "Kitchen",
+      "Dishwasher",
+      "Cabel TV",
+      "Fridge"
     ],
     "host": {
       "name": "Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "img/avatar-angelina.jpg",
       "isPro": false
     },
     "images": [
@@ -137,7 +142,7 @@ export const offers: TOffer[] = [
     ],
     "host": {
       "name": "Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "img/avatar-angelina.jpg",
       "isPro": false
     },
     "images": [
