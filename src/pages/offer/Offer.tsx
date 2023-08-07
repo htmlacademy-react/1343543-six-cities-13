@@ -3,12 +3,14 @@ import Header from '../../components/Header/Header';
 import ReviewsList from '../../components/ReviewsList/ReviewsList';
 import { TOffer } from '../../types/offer';
 import { useParams } from 'react-router-dom';
+import { TReview } from '../../types/review';
 
 type OfferProps = {
   offers: TOffer[];
+  reviews: TReview[];
 }
 
-function Offer({offers}: OfferProps): JSX.Element {
+function Offer({offers, reviews}: OfferProps): JSX.Element {
   const params = useParams();
 
   const offer = offers.find((item) => item.id === params.id);
@@ -163,9 +165,9 @@ function Offer({offers}: OfferProps): JSX.Element {
               {/* reviews */}
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">
-                  Reviews · <span className="reviews__amount">1</span>
+                  Reviews · <span className="reviews__amount">{reviews.length}</span>
                 </h2>
-                <ReviewsList />
+                <ReviewsList reviews={reviews} />
                 <AddReview />
               </section>
             </div>

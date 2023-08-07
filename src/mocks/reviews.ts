@@ -6,7 +6,7 @@ export const reviews: TReview[] = [
     "date": "2019-05-08T14:13:56.569Z",
     "user": {
       "name": "1Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "/img/avatar-angelina.jpg",
       "isPro": false
     },
     "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
@@ -17,7 +17,7 @@ export const reviews: TReview[] = [
     "date": "2019-05-08T14:13:56.569Z",
     "user": {
       "name": "2Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "/img/avatar-max.jpg",
       "isPro": true
     },
     "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
@@ -28,7 +28,7 @@ export const reviews: TReview[] = [
     "date": "2019-05-08T14:13:56.569Z",
     "user": {
       "name": "3Oliver Conner",
-      "avatarUrl": "https://url-to-image/image.png",
+      "avatarUrl": "/img/avatar-angelina.jpg",
       "isPro": false
     },
     "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
