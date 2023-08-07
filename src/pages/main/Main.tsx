@@ -87,10 +87,10 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <CardList offers={offers}/>
+              <CardList offers={offers} page={'main'}/>
             </section>
             <div className="cities__right-section">
-              <Map city={AMSTERDAM} offers={offers}/>
+              <Map city={AMSTERDAM} offers={offers} typeMap={'main'}/>
             </div>
           </div>
         </div>
