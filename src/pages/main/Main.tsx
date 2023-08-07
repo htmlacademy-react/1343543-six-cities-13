@@ -1,6 +1,8 @@
 import CardList from '../../components/CardList/CardList';
 import {TOffer} from '../../types/offer';
 import Header from '../../components/Header/Header';
+import Map from '../../components/Map/Map';
+import { AMSTERDAM } from '../../mocks/cities';
 
 type MainQunatityProps = {
   quantity: number;
@@ -88,7 +90,7 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
               <CardList offers={offers}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <Map city={AMSTERDAM} offers={offers}/>
             </div>
           </div>
         </div>
