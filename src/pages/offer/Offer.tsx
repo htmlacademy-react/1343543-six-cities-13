@@ -4,6 +4,8 @@ import ReviewsList from '../../components/ReviewsList/ReviewsList';
 import { TOffer } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import { TReview } from '../../types/review';
+import Map from '../../components/Map/Map';
+import { AMSTERDAM } from '../../mocks/cities';
 
 type OfferProps = {
   offers: TOffer[];
@@ -172,7 +174,7 @@ function Offer({offers, reviews}: OfferProps): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map" />
+          <Map city={AMSTERDAM} offers={offers} typeMap={'offers'}/>
         </section>
         <div className="container">
           <section className="near-places places">

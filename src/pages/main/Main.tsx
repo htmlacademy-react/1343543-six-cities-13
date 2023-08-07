@@ -90,7 +90,7 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
               <CardList offers={offers}/>
             </section>
             <div className="cities__right-section">
-              <Map city={AMSTERDAM} offers={offers}/>
+              <Map city={AMSTERDAM} offers={offers} typeMap={'main'}/>
             </div>
           </div>
         </div>

@@ -22,10 +22,11 @@ const currentCustomIcon = new Icon({
 type MapProps = {
   city: City;
   offers: TOffer[];
+  typeMap: 'offers' | 'main';
   selectedPoint?: TOffer | undefined;
 }
 
-function Map({city, offers}: MapProps) {
+function Map({city, offers, typeMap}: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -59,8 +60,10 @@ function Map({city, offers}: MapProps) {
     }
   }, [map, offers]);
   
+  const classMap = typeMap === 'main' ? 'cities__map' : 'offer__map';
+  
   return (
-    <section className="cities__map" ref={mapRef}/>
+    <section className={classMap} ref={mapRef}/>
   )
 }
 
