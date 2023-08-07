@@ -1,4 +1,4 @@
-import FavoriteLocation from '../ FavoriteLocation/FavoriteLocation';
+import FavoriteLocation from '../FavoriteLocation/FavoriteLocation';
 import { TOffer } from '../../types/offer';
 
 type FavoriteListProps = {
