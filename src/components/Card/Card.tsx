@@ -1,12 +1,14 @@
 import { TOffer } from '../../types/offer';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import cn from 'classnames';
 
 type CardProps = {
   offer: TOffer;
+  page: string;
   handleCardHover: (id: string) => void;
 }
 
-function Card({offer, handleCardHover}: CardProps): JSX.Element{
+function Card({offer, handleCardHover, page}: CardProps): JSX.Element{
   const {
     id,
     title,
@@ -17,8 +19,21 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
     isPremium,
     isFavorite,
   } = offer;
+
+  const articleClasses = cn({
+    'place-card': true,
+    'cities__card': page === 'main',
+    'near-places__card': page === 'offer',
+  });
+
+  const imageWrapperClasses = cn({
+    'place-card__image-wrapper': true,
+    'cities__image-wrapper': page === 'main',
+    'near-places__image-wrapper': page === 'offer',
+  });
+
   return (
-    <article className="cities__card place-card" onMouseEnter={() => handleCardHover(id)}>
+    <article className={articleClasses} onMouseEnter={() => handleCardHover(id)}>
       {
         isPremium &&
         <div className="place-card__mark">
@@ -26,7 +41,7 @@ function Card({offer, handleCardHover}: CardProps): JSX.Element{
         </div>
       }
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={imageWrapperClasses}>
         <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
