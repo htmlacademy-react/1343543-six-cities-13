@@ -4,6 +4,9 @@ import Header from '../../components/Header/Header';
 import Map from '../../components/Map/Map';
 import { AMSTERDAM } from '../../mocks/cities';
 import LocationList from '../../components/LocationsList/LocationList';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { setCity } from '../../store/action';
 
 type MainQunatityProps = {
   quantity: number;
@@ -11,6 +14,14 @@ type MainQunatityProps = {
 }
 
 function Main({quantity, offers}: MainQunatityProps): JSX.Element {
+  const selectedCity = useAppSelector((state) => state.selectedCity);
+  const dispatch = useAppDispatch();
+
+  const handleChangeCity = (city: string) => {
+    dispatch(setCity({selectedCity: city}));
+  }
+  
+  
   return (
     <div className="page page--gray page--main">
       {/* header */}
@@ -23,7 +34,10 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
         {/* tabs */}
         <div className="tabs">
           <section className="locations container">
-            <LocationList />
+            <LocationList 
+              selectedCity={selectedCity}
+              handleChangeCity={handleChangeCity}
+            />
           </section>
         </div>
         <div className="cities">

@@ -1,36 +1,29 @@
-function LocationList() {
+import { defaultCities } from "../../const"
+
+type LocationListProps = {
+  selectedCity: string,
+  handleChangeCity: (city: string) => void;
+}
+
+function LocationList({selectedCity, handleChangeCity}: LocationListProps) {
+  const getCities = () => {
+    return defaultCities.map((city) => {
+      return (
+        <li className="locations__item"
+          key={city}
+          onClick={() => handleChangeCity(city)}
+        >
+          <a className={`locations__item-link tabs__item${selectedCity === city ? ' tabs__item--active' : ''}`} href="#">
+            <span>{city}</span>
+          </a>
+        </li>
+      )
+    });
+  }
+
   return (
     <ul className="locations__list tabs__list">
-      <li className="locations__item">
-        <a className="locations__item-link tabs__item" href="#">
-          <span>Paris</span>
-        </a>
-      </li>
-      <li className="locations__item">
-        <a className="locations__item-link tabs__item" href="#">
-          <span>Cologne</span>
-        </a>
-      </li>
-      <li className="locations__item">
-        <a className="locations__item-link tabs__item" href="#">
-          <span>Brussels</span>
-        </a>
-      </li>
-      <li className="locations__item">
-        <a className="locations__item-link tabs__item tabs__item--active">
-          <span>Amsterdam</span>
-        </a>
-      </li>
-      <li className="locations__item">
-        <a className="locations__item-link tabs__item" href="#">
-          <span>Hamburg</span>
-        </a>
-      </li>
-      <li className="locations__item">
-        <a className="locations__item-link tabs__item" href="#">
-          <span>Dusseldorf</span>
-        </a>
-      </li>
+      {getCities()}
     </ul>
   )
 }

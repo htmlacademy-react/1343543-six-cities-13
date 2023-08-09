@@ -11,6 +11,15 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export const defaultCities = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
+] as const;
+
 export const URL_MARKER_DEFAULT =
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
 
