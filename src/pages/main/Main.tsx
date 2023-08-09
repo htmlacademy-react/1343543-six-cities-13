@@ -15,7 +15,12 @@ type MainQunatityProps = {
 
 function Main({quantity, offers}: MainQunatityProps): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
+  const offersList = useAppSelector((state) => state.offers);
+  
   const dispatch = useAppDispatch();
+
+  const offersByCity = offersList.filter((offer) => offer.city.name === selectedCity);
+
 
   const handleChangeCity = (city: string) => {
     dispatch(setCity({selectedCity: city}));
@@ -44,7 +49,7 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{quantity} places to stay in Amsterdam</b>
+              <b className="places__found">{offersByCity.length} places to stay in {selectedCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -71,10 +76,10 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <CardList offers={offers} page={'main'}/>
+              <CardList offers={offersByCity} page={'main'}/>
             </section>
             <div className="cities__right-section">
-              <Map city={AMSTERDAM} offers={offers} typeMap={'main'}/>
+              <Map city={AMSTERDAM} offers={offersByCity} typeMap={'main'}/>
             </div>
           </div>
         </div>
