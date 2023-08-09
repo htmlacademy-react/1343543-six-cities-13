@@ -1,26 +1,22 @@
 import Card from '../../components/Card/Card';
 import { TOffer } from '../../types/offer';
-import { useState } from 'react';
 import cn from 'classnames';
 
 type CardListProps = {
   page: string
   offers: TOffer[];
+  handleCardHover: (id: string) => void;
+  handleCardLeave: () => void;
 }
 
-function CardList({offers, page}: CardListProps) {
-  const [_activeCard, setActiveCard] = useState<string>('');
-
-  const handleCardHover = (id: string) => {
-    setActiveCard(id);
-  };
-
+function CardList({offers, page, handleCardHover, handleCardLeave}: CardListProps) {
   const generateCards = (): Array<JSX.Element> => offers.map((offer) => (
     <Card
       key={offer.id}
       offer={offer}
       page={page}
       handleCardHover={handleCardHover}
+      handleCardLeave={handleCardLeave}
     />
   ));
 

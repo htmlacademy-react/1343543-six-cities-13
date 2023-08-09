@@ -6,9 +6,10 @@ type CardProps = {
   offer: TOffer;
   page: string;
   handleCardHover: (id: string) => void;
+  handleCardLeave: () => void;
 }
 
-function Card({offer, handleCardHover, page}: CardProps): JSX.Element{
+function Card({offer, page, handleCardHover, handleCardLeave}: CardProps): JSX.Element{
   const {
     id,
     title,
@@ -33,7 +34,7 @@ function Card({offer, handleCardHover, page}: CardProps): JSX.Element{
   });
 
   return (
-    <article className={articleClasses} onMouseEnter={() => handleCardHover(id)}>
+    <article className={articleClasses} onMouseEnter={() => handleCardHover(offer.id)} onMouseLeave={() => handleCardLeave()}>
       {
         isPremium &&
         <div className="place-card__mark">

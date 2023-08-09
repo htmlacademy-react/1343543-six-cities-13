@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header';
 import ReviewsList from '../../components/ReviewsList/ReviewsList';
 import { TOffer } from '../../types/offer';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { TReview } from '../../types/review';
 import Map from '../../components/Map/Map';
 import { AMSTERDAM } from '../../mocks/cities';
@@ -15,6 +16,16 @@ type OfferProps = {
 
 function Offer({offers, reviews}: OfferProps): JSX.Element {
   const params = useParams();
+
+  const [activeCard, setActiveCard] = useState<string>('');
+
+  const handleCardHover = (id: string) => {
+    setActiveCard(id);
+  };
+
+  const handleCardLeave = () => {
+    setActiveCard('');
+  };
 
   const offer = offers.find((item) => item.id === params.id);
 
@@ -175,14 +186,14 @@ function Offer({offers, reviews}: OfferProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map city={AMSTERDAM} offers={offers} typeMap={'offers'}/>
+          <Map city={AMSTERDAM} offers={offers} typeMap={'offers'} activeCard={activeCard}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <CardList offers={offers.slice(0, 3)} page={"offer"}/>
+            <CardList offers={offers.slice(0, 3)} page={"offer"} handleCardHover={handleCardHover} handleCardLeave={handleCardLeave}/>
           </section>
         </div>
       </main>

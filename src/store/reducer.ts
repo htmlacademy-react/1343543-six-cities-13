@@ -5,6 +5,7 @@ import { fillOffers, setCity } from "./action";
 const initialState = {
   selectedCity: 'Paris',
   offers: offers,
+  filteredOffers: [],
 }
 
 const reducer = createReducer(initialState, (builder) => {
