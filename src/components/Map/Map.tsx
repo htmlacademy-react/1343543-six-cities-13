@@ -23,10 +23,10 @@ type MapProps = {
   city: City;
   offers: TOffer[];
   typeMap: 'offers' | 'main';
-  selectedPoint?: TOffer | undefined;
+  activeCard: string;
 }
 
-function Map({city, offers, typeMap}: MapProps) {
+function Map({city, offers, typeMap, activeCard}: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -36,6 +36,7 @@ function Map({city, offers, typeMap}: MapProps) {
 
   useEffect(() => {
     if (map) {
+      console.log(activeCard);
       const markerLayer = layerGroup().addTo(map);
       offers.forEach((offer, item) => {
         console.log(offers.length);
@@ -45,7 +46,9 @@ function Map({city, offers, typeMap}: MapProps) {
           });
 
           marker
-          .setIcon(defaultCustomIcon)
+            .setIcon(
+              activeCard === offer.id ? currentCustomIcon : defaultCustomIcon
+            )
           // .setIcon(
           //   selectedPoint !== undefined && point.title === selectedPoint.title
           //     ? currentCustomIcon
