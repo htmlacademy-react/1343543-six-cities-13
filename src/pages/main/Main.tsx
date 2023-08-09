@@ -8,12 +8,8 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { setCity } from '../../store/action';
 
-type MainQunatityProps = {
-  quantity: number;
-  offers: TOffer[];
-}
 
-function Main({quantity, offers}: MainQunatityProps): JSX.Element {
+function Main(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
   const offersList = useAppSelector((state) => state.offers);
   
