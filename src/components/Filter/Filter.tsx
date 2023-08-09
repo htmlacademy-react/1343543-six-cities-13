@@ -1,7 +1,15 @@
 import { useState } from "react"
 
 function Filter() {
+  const Filters = {
+    'popular': 'Popular',
+    'low-to-high': 'Price: low to high',
+    'high-to-low': 'Price: high to low',
+    'top-rated': 'Top rated first'
+  } as const;
+
   const [isOpened, setIsOpened] = useState(false)
+  const [selectedFilter, setSelectedFilter] = useState<string>(Filters['popular'])
   
   const handleMouseEnter = () => {
     setIsOpened(true)
@@ -9,6 +17,28 @@ function Filter() {
 
   const handleMouseLeave = () => {
     setIsOpened(false)
+  }
+
+  const handleFilterSelect = (key: string): void => {
+    setSelectedFilter(Filters[key as keyof typeof Filters])
+  }
+
+  const makeFilterList = () => {
+    return(
+      Object.keys(Filters).map((key) => {
+        return (
+          <li
+            key={key}
+            value={key}
+            className={`places__option ${selectedFilter === Filters[key as keyof typeof Filters] ? `places__option--active` : ``}`}
+            tabIndex={0}
+            onClick={() => handleFilterSelect(key)}
+          >
+            {Filters[key as keyof typeof Filters]}
+          </li>
+        )
+      })
+    )
   }
 
   return (
@@ -20,27 +50,13 @@ function Filter() {
     >
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex={0}>
-        Popular
+        {selectedFilter}
         <svg className="places__sorting-arrow" width={7} height={4}>
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
       <ul className={`places__options places__options--custom ${isOpened ? ` places__options--opened` : ''}`} onMouseLeave={handleMouseLeave}>
-        <li
-          className="places__option places__option--active"
-          tabIndex={0}
-        >
-          Popular
-        </li>
-        <li className="places__option" tabIndex={0}>
-          Price: low to high
-        </li>
-        <li className="places__option" tabIndex={0}>
-          Price: high to low
-        </li>
-        <li className="places__option" tabIndex={0}>
-          Top rated first
-        </li>
+        {makeFilterList()}
       </ul>
     </form>
   )
