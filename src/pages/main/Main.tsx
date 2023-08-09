@@ -3,6 +3,10 @@ import {TOffer} from '../../types/offer';
 import Header from '../../components/Header/Header';
 import Map from '../../components/Map/Map';
 import { AMSTERDAM } from '../../mocks/cities';
+import LocationList from '../../components/LocationsList/LocationList';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { setCity } from '../../store/action';
 
 type MainQunatityProps = {
   quantity: number;
@@ -10,6 +14,19 @@ type MainQunatityProps = {
 }
 
 function Main({quantity, offers}: MainQunatityProps): JSX.Element {
+  const selectedCity = useAppSelector((state) => state.selectedCity);
+  const offersList = useAppSelector((state) => state.offers);
+  
+  const dispatch = useAppDispatch();
+
+  const offersByCity = offersList.filter((offer) => offer.city.name === selectedCity);
+
+
+  const handleChangeCity = (city: string) => {
+    dispatch(setCity({selectedCity: city}));
+  }
+  
+  
   return (
     <div className="page page--gray page--main">
       {/* header */}
@@ -22,45 +39,17 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
         {/* tabs */}
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <LocationList 
+              selectedCity={selectedCity}
+              handleChangeCity={handleChangeCity}
+            />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{quantity} places to stay in Amsterdam</b>
+              <b className="places__found">{offersByCity.length} places to stay in {selectedCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -87,10 +76,10 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <CardList offers={offers} page={'main'}/>
+              <CardList offers={offersByCity} page={'main'}/>
             </section>
             <div className="cities__right-section">
-              <Map city={AMSTERDAM} offers={offers} typeMap={'main'}/>
+              <Map city={AMSTERDAM} offers={offersByCity} typeMap={'main'}/>
             </div>
           </div>
         </div>
