@@ -3,6 +3,7 @@ import {TOffer} from '../../types/offer';
 import Header from '../../components/Header/Header';
 import Map from '../../components/Map/Map';
 import { AMSTERDAM } from '../../mocks/cities';
+import LocationList from '../../components/LocationsList/LocationList';
 
 type MainQunatityProps = {
   quantity: number;
@@ -22,38 +23,7 @@ function Main({quantity, offers}: MainQunatityProps): JSX.Element {
         {/* tabs */}
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <LocationList />
           </section>
         </div>
         <div className="cities">
