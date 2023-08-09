@@ -1,5 +1,6 @@
 import CardList from '../../components/CardList/CardList';
 import {TOffer} from '../../types/offer';
+import {useState} from 'react';
 import Header from '../../components/Header/Header';
 import Map from '../../components/Map/Map';
 import { AMSTERDAM } from '../../mocks/cities';
@@ -8,15 +9,18 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { setCity } from '../../store/action';
 import Filter from '../../components/Filter/Filter';
+import { Filters } from '../../components/Filter/Filter';
+import { filterOffers, sortOffers } from '../../core/filterCities';
 
 function Main(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.selectedCity);
   const offersList = useAppSelector((state) => state.offers);
+  const [selectedFilter, setSelectedFilter] = useState<string>(Filters['popular'])
   
   const dispatch = useAppDispatch();
 
-  const offersByCity = offersList.filter((offer) => offer.city.name === selectedCity);
-
+  let offersByCity = filterOffers(offersList, selectedCity);
+  offersByCity = sortOffers(offersByCity, selectedFilter);
 
   const handleChangeCity = (city: string) => {
     dispatch(setCity({selectedCity: city}));
@@ -46,7 +50,7 @@ function Main(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offersByCity.length} places to stay in {selectedCity}</b>
-              <Filter />
+              <Filter selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter}/>
               <CardList offers={offersByCity} page={'main'}/>
             </section>
             <div className="cities__right-section">

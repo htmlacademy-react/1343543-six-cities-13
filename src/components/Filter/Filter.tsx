@@ -1,15 +1,19 @@
 import { useState } from "react"
 
-function Filter() {
-  const Filters = {
-    'popular': 'Popular',
-    'low-to-high': 'Price: low to high',
-    'high-to-low': 'Price: high to low',
-    'top-rated': 'Top rated first'
-  } as const;
+const Filters = {
+  'popular': 'Popular',
+  'low-to-high': 'Price: low to high',
+  'high-to-low': 'Price: high to low',
+  'top-rated': 'Top rated first'
+} as const;
 
+type FilterProps = {
+  selectedFilter: string
+  setSelectedFilter: (key: string) => void
+}
+
+function Filter({selectedFilter, setSelectedFilter}: FilterProps) {
   const [isOpened, setIsOpened] = useState(false)
-  const [selectedFilter, setSelectedFilter] = useState<string>(Filters['popular'])
   
   const handleMouseEnter = () => {
     setIsOpened(true)
@@ -20,7 +24,7 @@ function Filter() {
   }
 
   const handleFilterSelect = (key: string): void => {
-    setSelectedFilter(Filters[key as keyof typeof Filters])
+    setSelectedFilter(key)
   }
 
   const makeFilterList = () => {
@@ -50,7 +54,7 @@ function Filter() {
     >
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex={0}>
-        {selectedFilter}
+        {Filters[selectedFilter as keyof typeof Filters]}
         <svg className="places__sorting-arrow" width={7} height={4}>
           <use xlinkHref="#icon-arrow-select" />
         </svg>
@@ -63,3 +67,4 @@ function Filter() {
 }
 
 export default Filter
+export { Filters }
