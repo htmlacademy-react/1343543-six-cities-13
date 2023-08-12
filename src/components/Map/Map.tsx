@@ -20,42 +20,46 @@ const currentCustomIcon = new Icon({
 
 
 type MapProps = {
-  city: City;
   offers: TOffer[];
   typeMap: 'offers' | 'main';
   activeCard: string;
 }
 
-function Map({city, offers, typeMap, activeCard}: MapProps) {
-  const mapRef = useRef(null);
-  const map = useMap(mapRef, city);
-
-  const createMarkers = () => {
-
+const DEFAULT_CITY = {
+  "location": {
+    "latitude": 48.85661,
+    "longitude": 2.351499,
+    "zoom": 13
   }
+}
+
+function Map({offers, typeMap, activeCard}: MapProps) {
+  const mapRef = useRef(null);
+  const city = offers.length > 0 ? offers[0].location : DEFAULT_CITY.location;
+  const map = useMap(mapRef, city);
+  console.log('Перерисовалась карта')
+
 
   useEffect(() => {
     if (map) {
-      console.log(activeCard);
       const markerLayer = layerGroup().addTo(map);
       offers.forEach((offer, item) => {
-        console.log(offers.length);
           const marker = new Marker({
-            lat: offer.city.location.latitude,
-            lng: offer.city.location.longitude,
+            lat: offer.location.latitude,
+            lng: offer.location.longitude,
           });
 
           marker
             .setIcon(
               activeCard === offer.id ? currentCustomIcon : defaultCustomIcon
             )
-          // .setIcon(
-          //   selectedPoint !== undefined && point.title === selectedPoint.title
-          //     ? currentCustomIcon
-          //     : defaultCustomIcon
-          // )
           .addTo(markerLayer);
         });
+
+      map.setView({
+        lat: city.latitude,
+        lng: city.longitude,
+      })
 
       return () => {
         map.removeLayer(markerLayer);

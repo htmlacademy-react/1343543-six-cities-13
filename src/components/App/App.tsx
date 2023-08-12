@@ -8,36 +8,35 @@ import PrivateRoute from '../Private-Route/Private-Route.tsx';
 import {AuthorizationStatus} from '../../const.ts';
 import { TOffer } from '../../types/offer.ts';
 import { TReview } from '../../types/review.ts';
+import Loader from '../../pages/loader/Loader';
+import { useAppSelector } from '../../hooks/useAppSelector.ts';
 
-type AppQunatityProps = {
-  quantity: number;
-  offers: TOffer[];
-  reviews: TReview[];
-}
 
-function App({quantity, offers, reviews}: AppQunatityProps): JSX.Element {
+
+function App(): JSX.Element {
+  const isOffersLoading = useAppSelector((state) => state.isOffersLoading)
+
+  if (isOffersLoading) {
+    return <Loader />;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main quantity={quantity} offers={offers}/>} />
-        <Route path="/offer">
+        <Route path="/" element={<Main />} />
+        {/* <Route path="/offer">
           <Route index element={<div>No page is selected.</div>}></Route>
-          <Route path=":id" element={<Offer offers={offers} reviews={reviews}/>} />
+          <Route path=":id" element={<Offer />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/favorites" element={
           <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-            <Favorites offers={offers} />
+            <Favorites />
           </PrivateRoute>
-        }
-        />
-        <Route path="*" element={<NotFound />} />
+        }/>
+        <Route path="*" element={<NotFound />} /> */}
       </Routes>
-    </BrowserRouter>
-
-  // <Offer />
-  // <Login />
-  // <Favorites />
+      </BrowserRouter> 
   );
 }
 

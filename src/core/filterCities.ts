@@ -6,7 +6,6 @@ const filterOffers = (offers: TOffer[], selectedCity: string): TOffer[] => {
 }
 
 const sortOffers = (offers: TOffer[], sortScheme: string): TOffer[] => {
-  console.log(sortScheme);
   switch (sortScheme) {
     case 'popular':
       return offers;

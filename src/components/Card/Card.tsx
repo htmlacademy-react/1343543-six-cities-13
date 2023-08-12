@@ -1,6 +1,7 @@
 import { TOffer } from '../../types/offer';
 import { Link } from 'react-router-dom'
 import cn from 'classnames';
+import { preview } from 'vite';
 
 type CardProps = {
   offer: TOffer;
@@ -15,7 +16,7 @@ function Card({offer, page, handleCardHover, handleCardLeave}: CardProps): JSX.E
     title,
     type,
     price,
-    images,
+    previewImage,
     rating,
     isPremium,
     isFavorite,
@@ -46,7 +47,7 @@ function Card({offer, page, handleCardHover, handleCardLeave}: CardProps): JSX.E
         <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
-            src={images[0]}
+            src={previewImage}
             alt="Place image"
             width={260}
             height={200}

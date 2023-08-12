@@ -5,19 +5,18 @@ import { Provider } from 'react-redux';
 import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { store } from './store/store';
+import { fetchOffersAction } from './store/api-actions';
 
-
+store.dispatch(fetchOffersAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const quantity = 315;
-
 root.render(
   <React.StrictMode>
     <Provider store = {store}>
-      <App quantity={quantity} offers={offers} reviews={reviews}/>
+      <App />
     </Provider>
   </React.StrictMode>
 );
