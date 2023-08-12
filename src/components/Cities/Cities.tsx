@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 
 import { filterOffers, sortOffers } from '../../core/filterCities';
-import { AMSTERDAM } from '../../mocks/cities';
 
 type CitiesProps = {
   selectedCity: string,
@@ -28,7 +27,7 @@ function Cities({selectedCity}: CitiesProps) {
 
   let offersByCity = filterOffers(offersList, selectedCity);
   offersByCity = sortOffers(offersByCity, selectedFilter);
-
+  
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -39,7 +38,7 @@ function Cities({selectedCity}: CitiesProps) {
           <CardList offers={offersByCity} page={'main'} handleCardHover={handleCardHover} handleCardLeave={handleCardLeave}/>
         </section>
         <div className="cities__right-section">
-          <Map city={AMSTERDAM} offers={offersByCity} typeMap={'main'} activeCard={activeCard}/>
+          <Map offers={offersByCity} typeMap={'main'} activeCard={activeCard}/>
         </div>
       </div>
     </div>

@@ -16,6 +16,6 @@ export type TOffer = {
   bedrooms: number;
   goods: string[]; //заменить на Enum
   host: Host;
-  images: string[];
+  previewImage: string;
   maxAdults: number;
 }
