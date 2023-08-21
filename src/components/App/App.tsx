@@ -24,11 +24,11 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/offer">
           <Route index element={<div>No page is selected.</div>}></Route>
           <Route path=":id" element={<Offer />} />
         </Route>
-        <Route path="/login" element={<Login />} />
         <Route path="/favorites" element={
           <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
             <Favorites />
