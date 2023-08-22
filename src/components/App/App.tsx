@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Main from '../../pages/main/Main';
 import Offer from '../../pages/offer/Offer';
 import Login from '../../pages/login/Login';
@@ -10,6 +10,8 @@ import { TOffer } from '../../types/offer.ts';
 import { TReview } from '../../types/review.ts';
 import Loader from '../../pages/loader/Loader';
 import { useAppSelector } from '../../hooks/useAppSelector.ts';
+import HistoryRouter from '../HistoryRoute/HistoryRoute.tsx';
+import browserHistory from '../../browser-history.ts';
 
 
 
@@ -21,7 +23,7 @@ function App(): JSX.Element {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
@@ -36,7 +38,7 @@ function App(): JSX.Element {
         }/>
         <Route path="*" element={<NotFound />} /> */}
       </Routes>
-      </BrowserRouter> 
+      </HistoryRouter> 
   );
 }
 

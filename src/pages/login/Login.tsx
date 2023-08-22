@@ -1,4 +1,27 @@
+import { useState } from "react";
+import { sendAuthorizationAction } from "../../store/api-actions";
+import { store } from "../../store/store";
+
 function Login(): JSX.Element {
+  const [email, setEmail] = useState<string>('ivan@petrov.ru');
+  const [password, setPassword] = useState<string>('1q123456');
+
+  const handleEmailType = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(evt.target.value);
+  }
+
+  const handlePasswordType = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(evt.target.value);
+  }
+
+  const handleFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    store.dispatch(sendAuthorizationAction({
+      email,
+      password,
+    }));
+  }
+  
   return (
     <div className="page page--gray page--login">
       <header className="header">
@@ -22,7 +45,7 @@ function Login(): JSX.Element {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="#" method="post">
+            <form className="login__form form" action="#" method="post" onSubmit={handleFormSubmit}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
@@ -30,6 +53,8 @@ function Login(): JSX.Element {
                   type="email"
                   name="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={handleEmailType}
                   required
                 />
               </div>
@@ -40,6 +65,8 @@ function Login(): JSX.Element {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={handlePasswordType}
                   required
                 />
               </div>
